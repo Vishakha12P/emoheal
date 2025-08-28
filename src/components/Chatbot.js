@@ -9,14 +9,18 @@ import {
   MicOff,
   AlertCircle
 } from 'lucide-react';
+import { useLanguage } from '../contexts/LanguageContext';
+import { getTranslation } from '../translations/translations';
 import './Chatbot.css';
 
 const Chatbot = () => {
+  const { language } = useLanguage();
+  
   const [messages, setMessages] = useState([
     {
       id: 1,
       type: 'bot',
-      content: "Hi there! I'm your EMOHEAL companion. I'm here to listen, support, and walk alongside you on your healing journey. How are you feeling today? 💕",
+      content: getTranslation(language, 'chatbot.welcomeMessage'),
       timestamp: new Date()
     }
   ]);

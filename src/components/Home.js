@@ -13,49 +13,53 @@ import {
   Star,
   Quote
 } from 'lucide-react';
+import { useLanguage } from '../contexts/LanguageContext';
+import { getTranslation } from '../translations/translations';
 import './Home.css';
 
 const Home = () => {
+  const { language } = useLanguage();
+  
   const features = [
     {
       icon: MessageCircle,
-      title: "Bestie",
-      description: "Your empathetic AI companion who understands your journey and provides 24/7 emotional support",
+      title: getTranslation(language, 'home.features.chatbot.title'),
+      description: getTranslation(language, 'home.features.chatbot.description'),
       color: "#ec4899",
       path: "/chatbot"
     },
     {
       icon: Music,
-      title: "Music Therapy",
-      description: "Curated healing playlists designed to soothe your mind and uplift your spirit",
+      title: getTranslation(language, 'home.features.music.title'),
+      description: getTranslation(language, 'home.features.music.description'),
       color: "#f59e0b",
       path: "/music"
     },
     {
       icon: Heart,
-      title: "Meditation",
-      description: "Guided meditation sessions to help you find inner peace and emotional balance",
+      title: getTranslation(language, 'home.features.meditation.title'),
+      description: getTranslation(language, 'home.features.meditation.description'),
       color: "#10b981",
       path: "/meditation"
     },
     {
       icon: Dumbbell,
-      title: "Exercise",
-      description: "Gentle exercise routines tailored for your recovery and well-being",
+      title: getTranslation(language, 'home.features.exercise.title'),
+      description: getTranslation(language, 'home.features.exercise.description'),
       color: "#3b82f6",
       path: "/exercise"
     },
     {
       icon: Sprout,
-      title: "Nurture Zone",
-      description: "A safe space for self-care activities and personal growth",
+      title: getTranslation(language, 'home.features.nurture.title'),
+      description: getTranslation(language, 'home.features.nurture.description'),
       color: "#84cc16",
       path: "/nurture"
     },
     {
       icon: Shield,
-      title: "Healing Circle",
-      description: "Connect with others on similar journeys in a supportive community",
+      title: getTranslation(language, 'home.features.quickReach.title'),
+      description: getTranslation(language, 'home.features.quickReach.description'),
       color: "#ef4444",
       path: "/healing"
     }
@@ -130,7 +134,7 @@ const Home = () => {
             transition={{ delay: 0.3, type: "spring" }}
           >
             <Sparkles size={20} />
-            <span>Emotional Support Platform</span>
+            <span>{getTranslation(language, 'home.title')}</span>
           </motion.div>
 
           <motion.h1 
@@ -139,9 +143,7 @@ const Home = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.8 }}
           >
-            Your Healing Journey
-            <br />
-            <span className="gradient-text">Starts Here</span>
+{getTranslation(language, 'home.subtitle')}
           </motion.h1>
 
           <motion.p 
@@ -150,9 +152,7 @@ const Home = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6, duration: 0.8 }}
           >
-            Welcome to EMOHEAL, your compassionate companion for emotional healing and support. 
-            We're here to walk alongside you on your journey to wellness, providing tools, 
-            resources, and a caring community every step of the way.
+{getTranslation(language, 'home.description')}
           </motion.p>
 
           <motion.div 
@@ -161,12 +161,12 @@ const Home = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8, duration: 0.8 }}
           >
-            <Link to="/chatbot" className="btn-primary">
-              Start Your Journey
+            <Link to="/login" className="btn-primary">
+{getTranslation(language, 'home.getStarted')}
               <ArrowRight size={20} />
             </Link>
             <Link to="/healing" className="btn-secondary">
-              Join Our Community
+              {getTranslation(language, 'home.learnMore')}
             </Link>
           </motion.div>
         </div>
